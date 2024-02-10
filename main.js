@@ -3,7 +3,7 @@ const desktopMenu = document.querySelector(".desktop-menu");
 const menuHamIcon = document.querySelector(".menu");
 const mobileMenu = document.querySelector(".mobile-menu");
 const menuCarritoIcon = document.querySelector(".navbar-shopping-cart");
-const aside = document.querySelector(".product-detail");
+const aside = document.querySelector("#shoppingCart");
 const cardsContainer = document.querySelector('.cards-container');
 
 menuHamIcon.addEventListener("click", toggleMobileMenu);
@@ -75,7 +75,7 @@ productList.push({
         productImg.setAttribute('src', product.image);
     
         const productInf = document.createElement('div');
-        productInf.classList.add('product-inf');
+        productInf.classList.add('product-info');
     
         const productInfDiv = document.createElement('div');
     
