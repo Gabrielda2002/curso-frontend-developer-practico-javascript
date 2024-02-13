@@ -1,18 +1,26 @@
 const menuEmail = document.querySelector(".navbar-email");
 const desktopMenu = document.querySelector(".desktop-menu");
 const menuHamIcon = document.querySelector(".menu");
+const productDetailCloseIcon = document.querySelector('.product-detail-close');
 const mobileMenu = document.querySelector(".mobile-menu");
 const menuCarritoIcon = document.querySelector(".navbar-shopping-cart");
 const aside = document.querySelector("#shoppingCart");
 const cardsContainer = document.querySelector('.cards-container');
+const productDetailContainer=  document.querySelector('#productDetail');
 
 menuHamIcon.addEventListener("click", toggleMobileMenu);
 menuEmail.addEventListener("click", toggleDesktopMenu);
 menuCarritoIcon.addEventListener("click", toggleCarritoAside);
+productDetailCloseIcon.addEventListener("click", closeProductDetailAside);
 
 function toggleCarritoAside() {
   const mobileMenuOpen = mobileMenu.classList.contains("inactive");
   const desktopMenuOpen = desktopMenu.classList.contains("inactive");
+  const isProductDetailClosed = productDetailContainer.classList.contains('inactive');
+
+  if (!isProductDetailClosed) {
+    productDetailContainer.classList.add('inactive');
+  }
 
   if (!mobileMenuOpen) {
     mobileMenu.classList.add("inactive");
@@ -40,7 +48,19 @@ function toggleMobileMenu() {
     aside.classList.add("inactive");
   }
 
+  closeProductDetailAside();
+
   mobileMenu.classList.toggle("inactive");
+}
+
+function openProductDetailAside(){
+  aside.classList.add('inactive');
+
+    productDetailContainer.classList.remove('inactive');
+}
+
+function closeProductDetailAside(){
+  productDetailContainer.classList.add('inactive');
 }
 
 const productList = [];
@@ -73,6 +93,7 @@ productList.push({
     
         const productImg = document.createElement('img');
         productImg.setAttribute('src', product.image);
+        productImg.addEventListener('click', openProductDetailAside)
     
         const productInf = document.createElement('div');
         productInf.classList.add('product-info');
